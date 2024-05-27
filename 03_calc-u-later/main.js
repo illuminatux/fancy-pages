@@ -1,22 +1,26 @@
-var calcNums = document.querySelectorAll('.numbtn div');
-for (var i = 0; i < calcNums.length; i++) {
-    calcNums[i].addEventListener("click", function(p) { pushToOutput(p.currentTarget.innerText); });
-}
+const calcNums = document.querySelectorAll('.numbtn div');
+calcNums.forEach(numBtn => {
+    numBtn.addEventListener("click", (event) => {
+        pushToOutput(event.currentTarget.innerText);
+    });
+});
 
-var calcOps = document.querySelectorAll('.opsbtns div');
-for (var i = 0; i < calcOps.length; i++) {
-    calcOps[i].addEventListener("click", function(p) { pushToOutput(p.currentTarget.title); });
-}
+const calcOps = document.querySelectorAll('.opsbtns div');
+calcOps.forEach(opsBtn => {
+    opsBtn.addEventListener("click", (event) => {
+        pushToOutput(event.currentTarget.title);
+    });
+});
 
-document.getElementById('equals').addEventListener("click", function() { calculate(); });
-document.getElementById('reset').addEventListener("click", function() { reset(); });
+document.getElementById('equals').addEventListener("click", calculate);
+document.getElementById('reset').addEventListener("click", reset);
 
 function pushToOutput(value) {
     document.getElementById("output").innerText += value;
 }
 
 function calculate() {
-    var output = document.getElementById("output");
+    const output = document.getElementById("output");
     output.innerText = "Not Implemented";
 }
 
