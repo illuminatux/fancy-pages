@@ -21,9 +21,22 @@ function pushToOutput(value) {
 
 function calculate() {
     const output = document.getElementById("output");
-    output.innerText = "Not Implemented";
+    output.innerText = evaluate(output.innerText);
 }
 
 function reset() {
     document.getElementById("output").innerText = "";
+}
+
+function evaluate(expr) {
+    const regex = /^[0-9+\-\*\./]*$/;
+    if (!regex.test(expr)) {
+        return "INVALID";
+    }
+    try {
+        const calc = Function(`"use strict"; return (${expr});`);
+        return calc();
+    } catch {
+        return "ERROR";
+    }
 }
